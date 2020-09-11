@@ -15,7 +15,23 @@ struct Game{
     var tappedLetters:[Character] = []
     
     var formattedWord:String {
-        let testText = "test"
-        return testText
+        var formattedWord:String = ""
+        for letter in currentWord{
+            if tappedLetters.contains(letter){
+                formattedWord += String(letter)
+            } else {
+                formattedWord += "_"
+            }
+        }
+        
+        return formattedWord
     }
+    
+    mutating func checkTapped(letter letterTapped:Character){
+        tappedLetters.append(letterTapped)
+        if !currentWord.contains(letterTapped){
+            remainingIncorrectAnswers -= 1
+        }
+    }
+    
 }

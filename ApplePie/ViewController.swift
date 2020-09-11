@@ -34,21 +34,37 @@ class ViewController: UIViewController {
     
 //    MARK: Functions:
     func newRound(){
-        currentGame.currentWord = listOfWords.removeFirst()
+        currentGame.currentWord = listOfWords.removeFirst().lowercased()
         currentGame.remainingIncorrectAnswers = allowedIncorrectAnswers
         updateUI()
     }
     
     func updateUI(){
         treeImageView.image = UIImage(named: "Tree \(currentGame.remainingIncorrectAnswers)")
-        wordDisplayLabel.text = currentGame.currentWord
+
+        let wordForArray:String = currentGame.formattedWord
+        
+//        let newArray:[String] = Array("test")
+        
+        let currentWord:String = "Bok"
+        let newArray = Array(currentWord)
+        let wordToDisplay = newArray.joined(separator: "B")
+        
+        print(newArray)
+        print(wordToDisplay)
+        
+        
+        wordDisplayLabel.text = wordForArray
+        
         scoreLabel.text = "Wins: \(totalWins), Losses: \(totalLosses)"
     }
     
     //    MARK: Actions:
     @IBAction func letterButtonsTapped(_ sender: UIButton) {
         sender.isEnabled = false
-//        let letterTapped = sender.title(for: .normal)!
+        let letterTapped = sender.title(for: .normal)!
+        currentGame.checkTapped(letter: Character(letterTapped.lowercased()))
+        updateUI()
     }
 }
 
