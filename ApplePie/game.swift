@@ -12,7 +12,7 @@ struct Game{
     var currentWord:String
     var remainingIncorrectAnswers: Int
     
-    var tappedLetters:[Character] = []
+    var tappedLetters:[Character]
     
     var formattedWord:String {
         var formattedWord:String = ""
