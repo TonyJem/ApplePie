@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     //    MARK: Properties:
-    var currentGame:Game = Game(currentWord: "", remainingIncorrectAnswers: 0, tappedLetters: [])
+    var currentGame: Game!
     var allowedIncorrectAnswers: Int = 7
     
     var totalWins = 0{
@@ -44,9 +44,8 @@ class ViewController: UIViewController {
     func newRound(){
         if !listOfWords.isEmpty{
             allButtonsEnabled(true)
-            currentGame.currentWord = listOfWords.removeFirst().lowercased()
-            currentGame.remainingIncorrectAnswers = allowedIncorrectAnswers
-            currentGame.tappedLetters = []
+            let wordForRound = listOfWords.removeFirst().lowercased()
+            currentGame = Game(currentWord: wordForRound, remainingIncorrectAnswers: allowedIncorrectAnswers, tappedLetters: [])
             updateUI()
         } else {
             allButtonsEnabled(false)
