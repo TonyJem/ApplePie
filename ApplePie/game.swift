@@ -23,7 +23,6 @@ struct Game{
                 formattedWord += "_"
             }
         }
-        
         return formattedWord
     }
     
@@ -33,5 +32,4 @@ struct Game{
             remainingIncorrectAnswers -= 1
         }
     }
-    
 }

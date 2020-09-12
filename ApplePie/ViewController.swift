@@ -42,19 +42,13 @@ class ViewController: UIViewController {
     func updateUI(){
         treeImageView.image = UIImage(named: "Tree \(currentGame.remainingIncorrectAnswers)")
 
-        let wordForArray:String = currentGame.formattedWord
-        
-//        let newArray:[String] = Array("test")
-        
-        let currentWord:String = "Bok"
-        let newArray = Array(currentWord)
-        let wordToDisplay = newArray.joined(separator: "B")
-        
-        print(newArray)
-        print(wordToDisplay)
-        
-        
-        wordDisplayLabel.text = wordForArray
+        let formattedWord:String = currentGame.formattedWord
+        var formattedWordAsArray:[String] = []
+        for letter in formattedWord{
+            formattedWordAsArray.append(String(letter))
+        }
+        let formattedWordToDisplay = formattedWordAsArray.joined(separator: " ")
+        wordDisplayLabel.text = formattedWordToDisplay
         
         scoreLabel.text = "Wins: \(totalWins), Losses: \(totalLosses)"
     }
