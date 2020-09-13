@@ -55,11 +55,7 @@ class ViewController: UIViewController {
     func updateUI(){
         treeImageView.image = UIImage(named: "Tree \(currentGame.remainingIncorrectAnswers)")
         
-        var formattedWordAsArray:[String] = []
-        for letter in currentGame.formattedWord{
-            formattedWordAsArray.append(String(letter))
-        }
-        wordDisplayLabel.text = formattedWordAsArray.joined(separator: " ")
+        wordDisplayLabel.text = Array(currentGame.formattedWord).map {String($0)}.joined(separator: " ")
         
         scoreLabel.text = "Wins: \(totalWins), Losses: \(totalLosses)"
     }
