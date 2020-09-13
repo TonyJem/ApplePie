@@ -11,7 +11,10 @@ import UIKit
 class ViewController: UIViewController {
     //    MARK: Properties:
     var currentGame: Game!
+    var listOfWords:[String] = ["apple", "book", "home"]
     var allowedIncorrectAnswers: Int = 7
+    var totalScore: Int = 0
+    let pointsPerCorrectWord:Int = 15
     
     var totalWins = 0{
         didSet{
@@ -24,7 +27,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var listOfWords:[String] = ["apple", "book", "home"]
+
     
     
     //    MARK: Outlets:
@@ -45,7 +48,7 @@ class ViewController: UIViewController {
         if !listOfWords.isEmpty{
             allButtonsEnabled(true)
             let wordForRound = listOfWords.removeFirst().lowercased()
-            currentGame = Game(currentWord: wordForRound, remainingIncorrectAnswers: allowedIncorrectAnswers, tappedLetters: [])
+            currentGame = Game(currentWord: wordForRound, remainingIncorrectAnswers: allowedIncorrectAnswers, totalScore: totalScore)
             updateUI()
         } else {
             allButtonsEnabled(false)
@@ -57,7 +60,8 @@ class ViewController: UIViewController {
         
         wordDisplayLabel.text = Array(currentGame.formattedWord).map {String($0)}.joined(separator: " ")
         
-        scoreLabel.text = "Wins: \(totalWins), Losses: \(totalLosses)"
+        totalScore = currentGame.totalScore
+        scoreLabel.text = "Wins: \(totalWins), Losses: \(totalLosses), Score: \(totalScore)"
     }
     
     func checkGameStatus(){
@@ -65,6 +69,7 @@ class ViewController: UIViewController {
             totalLosses += 1
         }
         if currentGame.formattedWord == currentGame.currentWord{
+            totalScore += pointsPerCorrectWord
             totalWins += 1
         }
     }

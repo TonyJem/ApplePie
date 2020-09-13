@@ -11,8 +11,10 @@ import Foundation
 struct Game{
     var currentWord:String
     var remainingIncorrectAnswers: Int
-    
-    var tappedLetters:[Character]
+    var totalScore: Int
+        
+    let pointsPerCorrectLetter:Int = 5
+    var tappedLetters:[Character] = []
     
     var formattedWord:String {
         var formattedWord:String = ""
@@ -28,7 +30,9 @@ struct Game{
     
     mutating func checkTapped(letter letterTapped:Character){
         tappedLetters.append(letterTapped)
-        if !currentWord.contains(letterTapped){
+        if currentWord.contains(letterTapped){
+            totalScore += pointsPerCorrectLetter
+        } else {
             remainingIncorrectAnswers -= 1
         }
     }
