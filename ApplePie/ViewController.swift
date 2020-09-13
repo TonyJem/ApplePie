@@ -8,6 +8,9 @@
 
 import UIKit
 
+var player1 = Player(name: "FirstPlayer", totalScore: 0, isCurrentPlayer: true)
+var player2 = Player(name: "SecondPlayer", totalScore: 0, isCurrentPlayer: false)
+
 class ViewController: UIViewController {
     //    MARK: Properties:
     var currentGame: Game!
@@ -27,14 +30,13 @@ class ViewController: UIViewController {
         }
     }
     
-
-    
-    
     //    MARK: Outlets:
     @IBOutlet var treeImageView: UIImageView!
     @IBOutlet var letterButtons: [UIButton]!
     @IBOutlet var wordDisplayLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet var player1ScoreLabel: UILabel!
+    @IBOutlet var player2ScoreLabel: UILabel!
     
     //    MARK: Start here:
     override func viewDidLoad() {
@@ -60,8 +62,14 @@ class ViewController: UIViewController {
         
         wordDisplayLabel.text = Array(currentGame.formattedWord).map {String($0)}.joined(separator: " ")
         
+        player1ScoreLabel.text = "\(player1.name): \(player1.totalScore)"
+        player1ScoreLabel.isEnabled = player1.isCurrentPlayer
+        
         totalScore = currentGame.totalScore
-        scoreLabel.text = "Wins: \(totalWins), Losses: \(totalLosses), Score: \(totalScore)"
+        scoreLabel.text = "Wins: \(totalWins), Losses: \(totalLosses), TotalScore: \(player1.totalScore + player2.totalScore)"
+        
+        player2ScoreLabel.text = "\(player2.name): \(player2.totalScore)"
+        player2ScoreLabel.isEnabled = player2.isCurrentPlayer
     }
     
     func checkGameStatus(){
@@ -69,7 +77,7 @@ class ViewController: UIViewController {
             totalLosses += 1
         }
         if currentGame.formattedWord == currentGame.currentWord{
-            totalScore += pointsPerCorrectWord
+            currentGame.currentPlayer.totalScore += pointsPerCorrectWord
             totalWins += 1
         }
     }
@@ -78,6 +86,10 @@ class ViewController: UIViewController {
         for button in letterButtons{
             button.isEnabled = state
         }
+    }
+    
+    func switchPlayers(){
+        
     }
     
     //    MARK: Actions:
