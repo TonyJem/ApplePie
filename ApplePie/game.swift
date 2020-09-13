@@ -31,7 +31,11 @@ struct Game{
     mutating func checkTapped(letter letterTapped:Character){
         tappedLetters.append(letterTapped)
         if currentWord.contains(letterTapped){
-            totalScore += pointsPerCorrectLetter
+            for letter in currentWord{
+                if letter == letterTapped{
+                    totalScore += pointsPerCorrectLetter
+                }
+            }
         } else {
             remainingIncorrectAnswers -= 1
         }
