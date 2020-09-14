@@ -14,11 +14,11 @@ struct Game{
     var totalScore: Int
     
     var currentPlayer:Player {
-        var setToPlayer = player1
+        var setAsCurrentPlayer = player1
         if player1.isCurrentPlayer == false {
-            setToPlayer = player2
+            setAsCurrentPlayer = player2
         }
-        return setToPlayer
+        return setAsCurrentPlayer
     }
         
     let pointsPerCorrectLetter:Int = 5

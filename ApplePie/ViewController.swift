@@ -88,10 +88,6 @@ class ViewController: UIViewController {
         }
     }
     
-    func switchPlayers(){
-        
-    }
-    
     //    MARK: Actions:
     @IBAction func letterButtonsTapped(_ sender: UIButton) {
         sender.isEnabled = false
