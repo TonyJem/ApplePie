@@ -4,6 +4,16 @@ var player1 = Player(name: "FirstPlayer", totalScore: 0, isCurrentPlayer: true)
 var player2 = Player(name: "SecondPlayer", totalScore: 0, isCurrentPlayer: false)
 
 class ViewController: UIViewController {
+    
+    //    MARK: Outlets:
+    @IBOutlet var treeImageView: UIImageView!
+    @IBOutlet var letterButtons: [UIButton]!
+    @IBOutlet var wordDisplayLabel: UILabel!
+    @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet var player1ScoreLabel: UILabel!
+    @IBOutlet var player2ScoreLabel: UILabel!
+    
+    
     //    MARK: Properties:
     var currentGame: Game!
     var listOfWords:[String] = ["apple", "book", "home"]
@@ -21,14 +31,6 @@ class ViewController: UIViewController {
             newRound()
         }
     }
-    
-    //    MARK: Outlets:
-    @IBOutlet var treeImageView: UIImageView!
-    @IBOutlet var letterButtons: [UIButton]!
-    @IBOutlet var wordDisplayLabel: UILabel!
-    @IBOutlet var scoreLabel: UILabel!
-    @IBOutlet var player1ScoreLabel: UILabel!
-    @IBOutlet var player2ScoreLabel: UILabel!
     
     //    MARK: Start here:
     override func viewDidLoad() {
