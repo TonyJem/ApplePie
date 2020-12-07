@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  ApplePie
-//
-//  Created by Office-iMac on 2020-09-11.
-//  Copyright © 2020 Tony Jem. All rights reserved.
-//
-
 import UIKit
 
 var player1 = Player(name: "FirstPlayer", totalScore: 0, isCurrentPlayer: true)

@@ -1,11 +1,3 @@
-//
-//  player.swift
-//  ApplePie
-//
-//  Created by Office-iMac on 2020-09-13.
-//  Copyright © 2020 Tony Jem. All rights reserved.
-//
-
 import Foundation
 class Player {
     var name: String
